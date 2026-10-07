@@ -67,14 +67,14 @@ public class StudentController {
 	}
 	
 	@PreAuthorize("hasRole('REGISTRY', 'SUPPORT_STAFF', 'DEAN')")
-	@GetMapping("/student/{schoolId}")
+	@GetMapping("/student/school/{schoolId}")
 	public ResponseEntity<List<Student>> getStudentBySchool(@PathVariable int schoolId){
 		List<Student> student = service.getStudentBySchool(schoolId);
 		return new ResponseEntity<>(student, HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasRole('REGISTRY', 'SUPPORT_STAFF', 'DEAN', 'HOD', 'FACAULTY')")
-	@GetMapping("/student/{deptId}")
+	@GetMapping("/student/department/{deptId}")
 	public ResponseEntity<List<Student>> getStudentByDepartment(@PathVariable int deptId){
 		List<Student> student = service.getStudentByDepartment(deptId);
 		return new ResponseEntity<>(student, HttpStatus.OK);
